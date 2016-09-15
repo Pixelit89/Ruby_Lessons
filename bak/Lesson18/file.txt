@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Router Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="//code.jquery.com/jquery-2.0.3.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/knockout/3.1.0/knockout-min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/knockout.mapping/2.4.1/knockout.mapping.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.66.0-2013.10.09/jquery.blockUI.min.js"></script>
+    <script src="/Content/js/global-functions.js"></script>
+    <link href="/ContentLibs/bootstrap/less/bootstrap.less" rel="stylesheet">
+    <link href="/Content/less/rubyschool.less" rel="stylesheet">
+    <link rel="shortcut icon" href="/Content/images/favicon.png">
+</head>
+<body>
+    <div class="container header">
+    <div class="row">
+        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4">
+            <a class="logo" href="/"><img src="/Content/images/logo.png" /></a>
+        </div>
+        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-8">
+            <ul>
+                <li><a href="http://forum.rubyschool.us">Форум</a></li>
+                <li>
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" style="display: inline">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----">
+                        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+            <p>
+                <h3>Router Demo</h3>
+            </p>
+            <p>
+                Access denied
+            </p>
+            <form action="/router" method="POST">
+                <p>Login:</p>
+                <p>
+                    <input type="text" name="login" class="form-control" style="width: 200px" autocomplete="off" />
+                </p>
+                <p>Password:</p>
+                <p>
+                    <input type="password" name="password" class="form-control" style="width: 200px" />
+                </p>
+                <p>
+                    <input type="submit" value="Click to Enter" class="btn btn-primary btn-lg" />
+                </p>
+            </form>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+    <div class="row">
+        <div class="footer col-lg-12">
+            <div class="col-lg-6 col-md-6">
+                <a href="/contacts">Контактная информация</a><br />
+                <span class="copyright">&copy; 2014-2016 Ruby School, San Francisco, CA, U.S.</span>
+            </div>
+            <div class="col-lg-6 col-md-6 text-right">
+            </div>
+        </div> 
+    </div>
+</div>
+<div style="text-indent: -5000px; width: 1px; height: 1px; overflow: hidden; position: absolute">
+    <!--LiveInternet counter-->
+    <script type="text/javascript">
+<!--
+document.write("<a href='http://www.liveinternet.ru/click' "+
+"target=_blank><img src='//counter.yadro.ru/hit?t42.6;r"+
+escape(document.referrer)+((typeof(screen)=="undefined")?"":
+";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+";"+Math.random()+
+"' alt='' title='LiveInternet' "+
+"border='0' width='31' height='31'><\/a>")
+//--></script><!--/LiveInternet-->
+</div>
+</body>
+</html>
